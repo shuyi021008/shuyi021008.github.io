@@ -238,13 +238,13 @@
 
 <p>启动集群:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在node1上 启动一个master 和全部worker</span></span><br><span class="line">sbin/start-all.sh</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">注意, 下面命令在node2上执行</span></span><br><span class="line">sbin/start-master.sh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在node2上启动一个备用的master进程</span></span><br></pre></td></tr></table></figure>
-<p><img src="/./md%E5%9B%BE/spark.assets/14.jpg"><br><img src="/./md%E5%9B%BE/spark.assets/15.jpg"></p>
+<p><img src="/../img/14.jpg"><br><img src="/../img/15.jpg"></p>
 <h3 id="master主备切换"><a href="#master主备切换" class="headerlink" title="master主备切换"></a>master主备切换</h3><p>提交一个spark任务到当前<code>alive</code>master上:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/spark-submit --master spark://node1:7077 /export/server/spark/examples/src/main/python/pi.py 1000</span><br></pre></td></tr></table></figure>
 
 
 <p>在提交成功后, 将alivemaster直接kill掉</p>
-<p>不会影响程序运行:<br><img src="/./md%E5%9B%BE/spark.assets/16.jpg"><br>当新的master接收集群后, 程序继续运行, 正常得到结果.</p>
+<p>不会影响程序运行:<br><img src="/../img/16.jpg"><br>当新的master接收集群后, 程序继续运行, 正常得到结果.</p>
 <blockquote>
 <p>结论 HA模式下, 主备切换 不会影响到正在运行的程序.</p>
 <p>最大的影响是 会让它中断大约30秒左右.</p>
